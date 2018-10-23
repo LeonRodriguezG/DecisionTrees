@@ -5,7 +5,7 @@ allAtt=[]
 dataSet=[]
 auxLine=nil
 
-
+#Por favor 
 
 while(relation.split('\ ')[0]!= "@relation")
   relation = gets.chomp

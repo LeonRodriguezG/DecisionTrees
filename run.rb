@@ -6,7 +6,6 @@ dataSet=[]
 auxLine=nil
 
 
-lineIndex=0
 
 while(relation.split('\ ')[0]!= "@relation")
   relation = gets.chomp
@@ -25,10 +24,10 @@ while(newLine.split('\ ')[0]!= "@attribute")
 end
 
 while(newLine.split('\ ')[0]!= "@data")
-  newLine = lines[lineIndex+=1]
+  newLine = gets.chomp
 end
 newLine = gets.chomp
-while newLine != nil
+while newLine != ""
   if newLine[0] =! '%'
     dataSet.push(newLine.split(','))
   end

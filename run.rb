@@ -4,7 +4,7 @@ newLine=nil
 allAtt=[]
 dataSet=[]
 auxLine=nil
-
+ 
 lines = $stdin.readlines
 
 lineIndex=0

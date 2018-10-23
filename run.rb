@@ -16,8 +16,8 @@ newLine = gets.chomp
 while(newLine.split(' ')[0]!= "@attribute")
   newLine = gets.chomp
   while(newLine.split(' ')[0]=="@attribute")
-    allAtt[0].push(newLine.split(' ')[1])
-    allAtt[1].push(newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(','))
+    allAtt.push(newLine.split(' ')[1])
+    allAtt[allAtt.length - 1].push(newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(','))
     auxLine=newLine
     newLine = gets.chomp
   end

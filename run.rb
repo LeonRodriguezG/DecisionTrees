@@ -16,26 +16,24 @@ relation = relation.split(' ')[1]
 newLine = gets.chomp
 while(newLine.split(' ')[0] != "@attribute")
   newLine = gets.chomp
-  while(newLine.split(' ')[0] == "@attribute")
-    allAtt[(":" + newLine.split(' ')[1])] = newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(',')
-    #allAtt.push(newLine.split(' ')[1])
-    #puts "AllAtt: #{allAtt}"
-    auxLine = newLine
-    newLine = gets.chomp
-  end
-  newLine = auxLine if auxLine.split(' ')[0] == "@attribute"
 end
 
-newLine = gets.chomp
+while(newLine.split(' ')[0] == "@attribute")
+  allAtt[(":" + newLine.split(' ')[1])] = newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(',')
+  #allAtt.push(newLine.split(' ')[1])
+  #puts "AllAtt: #{allAtt}"
+  newLine = gets.chomp
+end
+
 while(newLine.split(' ')[0] != "@data")
   newLine = gets.chomp
-  puts "\n\t Aqui voy"
 end
-while newLine[0] != ""
-  if newLine[0] != '%'
+
+while newLine.split(' ')[0] != nil
+  if newLine.split(' ')[0] != '%'
     dataSet.push(newLine.split(','))
   end
-  newLine=auxLine if auxLine.split(' ')[0] == "@attribute"
+  newLine = gets.chomp
 end
 
 puts relation

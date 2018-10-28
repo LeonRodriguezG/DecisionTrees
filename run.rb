@@ -6,6 +6,11 @@ allAtt = Hash.new
 dataSet=[]
 auxLine=nil
 
+input = gets
+input = input.split('\n')
+puts input
+
+
 relation = gets.chomp
 while(relation.split(' ')[0] != "@relation")
   relation = gets.chomp

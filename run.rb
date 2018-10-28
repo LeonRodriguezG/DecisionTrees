@@ -6,34 +6,41 @@ allAtt = Hash.new
 dataSet=[]
 auxLine=nil
 
-relation = gets
-while(relation.split(' ')[0] != "@relation")
-  relation = gets
+
+relation = gets.chomp
+while relation == nil
+  relation = gets.chomp
+end
+while relation.split(' ')[0] != "@relation"
+  relation = gets.chomp
 end
 relation = relation.split(' ')[1]
 #puts "Relation: #{relation}"
 
-newLine = gets
-while(newLine.split(' ')[0] != "@attribute")
-  newLine = gets
+newLine = gets.chomp
+while newLine == nil
+  newLine = gets.chomp
+end
+while newLine.split(' ')[0] != "@attribute"
+  newLine = gets.chomp
 end
 
-while(newLine.split(' ')[0] == "@attribute")
+while newLine.split(' ')[0] == "@attribute"
   allAtt[(":" + newLine.split(' ')[1])] = newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(',')
   #allAtt.push(newLine.split(' ')[1])
   #puts "AllAtt: #{allAtt}"
-  newLine = gets
+  newLine = gets.chomp
 end
 
 while(newLine.split(' ')[0] != "@data")
-  newLine = gets
+  newLine = gets.chomp
 end
 
 while newLine.split(' ')[0] != nil
   if newLine.split(' ')[0] != '%'
     dataSet.push(newLine.split(','))
   end
-  newLine = gets
+  newLine = gets.chomp
 end
 
 puts relation

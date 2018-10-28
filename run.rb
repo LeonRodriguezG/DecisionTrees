@@ -29,8 +29,9 @@ end
 newLine = gets.chomp
 while(newLine.split(' ')[0] != "@data")
   newLine = gets.chomp
+  puts "\n\t Aqui voy"
 end
-while newLine != ""
+while newLine[0] != ""
   if newLine[0] != '%'
     dataSet.push(newLine.split(','))
   end

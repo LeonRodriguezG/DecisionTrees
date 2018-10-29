@@ -138,9 +138,8 @@ end
 
 line = 0
 newLine = gets
-puts "A ver que pasa: #{newLine}"
 while newLine != "\n"
-  if newLine != "\n" && newLine[0] != "%"
+  if newLine != "\n" && newLine[0,1] != "%"
     dataSet[line]=[]
     newLine.split(',').each do |val|
       dataSet[line].push(val)

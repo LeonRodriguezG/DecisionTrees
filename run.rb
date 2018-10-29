@@ -82,7 +82,8 @@ def Expand (dataMatrix, level=0)
   dataForAttributes = Hash.new
   gain = -1.0
   expandedAttPos = nil
-  (dataMatrix['attributes'].length-1).times do |n|
+  len = dataMatrix['attributes'].length - 1
+  len.times do |n|
     if Gain(dataMatrix,dataMatrix['attributes'][n])>gain
       expandedAttPos = n
       gain = Gain(dataMatrix,dataMatrix['attributes'][n])

@@ -99,8 +99,7 @@ def Expand (dataMatrix, level=0)
     dataForAttributes[dataMatrix[n][expandedAttPos]][currIndex] = dataMatrix[n].dup
     dataForAttributes[dataMatrix[n][expandedAttPos]][currIndex].delete_at(expandedAttPos)
   end
-  puts AllAtt[dataMatrix['attributes'][expandedAttPos]]
-  dataForAttributes.keys.each do |key|
+  AllAtt[dataMatrix['attributes'][expandedAttPos]].each do |key|
     puts "#{space}#{dataMatrix['attributes'][expandedAttPos]}: #{key}"
     Expand(dataForAttributes[key],level+1)
   end

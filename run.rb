@@ -148,6 +148,7 @@ while newLine != "\n"
   end
   if gets.chomp != "\n"
     newLine = gets.chomp
+  end
 end
 
 Expand(dataSet)

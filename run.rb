@@ -144,8 +144,8 @@ end
 
 line = 0
 newLine = gets
-while newLine != "\n" 
-  if newLine != "\n" && newLine[0] != '%'
+while newLine != "\n"
+  if newLine != "\n" && newLine[0] != "%"
     dataSet[line]=[]
     newLine.split(',').each do |val|
       dataSet[line].push(val)

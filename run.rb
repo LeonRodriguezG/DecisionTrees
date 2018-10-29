@@ -69,6 +69,7 @@ def Gain(dataMatrix , gainAttribute)
 end
 
 
+allAtt = Hash.new
 def Expand (dataMatrix, level=0)
   space = ""
   level.times do
@@ -111,7 +112,6 @@ end
 
 relation=nil
 newLine=nil
-allAtt = Hash.new
 dataSet= Hash.new
 
 relation = gets.chomp

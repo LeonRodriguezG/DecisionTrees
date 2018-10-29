@@ -138,6 +138,7 @@ end
 
 line = 0
 newLine = gets
+puts "A ver que pasa: #{newLine[0,1]}"
 while newLine != "\n"
   if newLine != "\n" && newLine[0,1] != "%"
     dataSet[line]=[]

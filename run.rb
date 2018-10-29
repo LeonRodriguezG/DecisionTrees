@@ -98,7 +98,7 @@ def Expand (dataMatrix, level=0)
     dataForAttributes[dataMatrix[n][expandedAttPos]][currIndex] = dataMatrix[n].dup
     dataForAttributes[dataMatrix[n][expandedAttPos]][currIndex].delete_at(expandedAttPos)
   end
-  dataForAttributes.keys.each do |key|
+  allAtt[dataMatrix['attributes'][expandedAttPos]].each do |key|
     puts "#{space}#{dataMatrix['attributes'][expandedAttPos]}: #{key}"
     Expand(dataForAttributes[key],level+1)
   end
@@ -127,7 +127,7 @@ while newLine.split(' ')[0] != "@attribute"
 end
 dataSet['attributes']=[]
 while newLine.split(' ')[0] == "@attribute"
-  allAtt[(":" + newLine.split(' ')[1])] = newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(',')
+  allAtt[( newLine.split(' ')[1])] = newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(',')
   dataSet['attributes'].push(newLine.split('{')[0].split(' ')[1])
   newLine = gets.chomp
 end

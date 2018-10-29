@@ -138,9 +138,10 @@ end
 
 #line = 0
 newLine = gets
+dataSet = []
+puts "Av er que pasa: #{newLine.split(',')}"
 while newLine != "\n"
   if newLine != "\n" && newLine[0,1] != "%"
-    dataSet = []
     newLine.split(',').each do |val|
       dataSet.push(val)
     end

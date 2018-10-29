@@ -147,6 +147,7 @@ while newLine != "\n"
     #line+=1
   end
   newLine = gets.chomp
+  puts "Porque? #{newLine}"
 end
 
 Expand(dataSet)

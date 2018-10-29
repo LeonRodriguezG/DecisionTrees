@@ -146,10 +146,10 @@ while newLine != "\n"
     end
     #line+=1
   end
-  if gets.chomp == nil
+  newLine = gets
+  if newLine == nil
     break
   end
-    newLine = gets.chomp
 end
 
 Expand(dataSet)

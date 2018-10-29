@@ -139,7 +139,6 @@ end
 #line = 0
 newLine = gets.chomp
 dataSet = []
-puts "Av er que pasa: #{newLine.split(',')}"
 while newLine != "\n"
   if newLine != "\n" && newLine[0,1] != "%"
     newLine.split(',').each do |val|

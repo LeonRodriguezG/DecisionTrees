@@ -144,7 +144,7 @@ end
 
 line = 0
 newLine = gets
-while newLine.split(' ')[0] != nil
+while newLine[0] >= '0x21'
   if newLine.split(' ')[0] != '%'
     dataSet[line]=[]
     newLine.split(',').each do |val|

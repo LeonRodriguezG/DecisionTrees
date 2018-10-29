@@ -82,8 +82,7 @@ def Expand (dataMatrix, level=0)
   dataForAttributes = Hash.new
   gain = -1.0
   expandedAttPos = nil
-  len = dataMatrix['attributes'].length - 1
-  len.times do |n|
+  (dataMatrix['attributes'].length - 1).times do |n|
     if Gain(dataMatrix,dataMatrix['attributes'][n])>gain
       expandedAttPos = n
       gain = Gain(dataMatrix,dataMatrix['attributes'][n])
@@ -138,7 +137,7 @@ while(newLine.split(' ')[0] != "@data")
 end
 
 line = 0
-newLine = gets.chomp
+newLine = gets
 while newLine != "\n"
   if newLine != "\n" && newLine[0,1] != "%"
     dataSet[line]=[]

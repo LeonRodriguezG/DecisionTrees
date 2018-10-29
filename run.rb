@@ -146,9 +146,8 @@ while newLine != "\n"
     end
     #line+=1
   end
-  if gets.chomp != "\n"
+  break if gets.chomp.empty?
     newLine = gets.chomp
-  end
 end
 
 Expand(dataSet)

@@ -114,30 +114,30 @@ newLine=nil
 allAtt = Hash.new
 dataSet= Hash.new
 
-relation = gets
+relation = gets.chomp!
 while relation.split(' ')[0] != "@relation"
-  relation = gets
+  relation = gets.chomp!
 end
 relation = relation.split(' ')[1]
 
-newLine = gets
+newLine = gets.chomp!
 
 while newLine.split(' ')[0] != "@attribute"
-  newLine = gets
+  newLine = gets.chomp!
 end
 dataSet['attributes']=[]
 while newLine.split(' ')[0] == "@attribute"
   allAtt[(":" + newLine.split(' ')[1])] = newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(',')
   dataSet['attributes'].push(newLine.split('{')[0].split(' ')[1])
-  newLine = gets
+  newLine = gets.chomp!
 end
 
 while(newLine.split(' ')[0] != "@data")
-  newLine = gets
+  newLine = gets.chomp!
 end
 
 #line = 0
-newLine = gets
+newLine = gets.chomp!
 dataSet = []
 puts "Av er que pasa: #{newLine.split(',')}"
 while newLine != "\n"
@@ -147,7 +147,7 @@ while newLine != "\n"
     end
     #line+=1
   end
-  newLine = gets
+  newLine = gets.chomp!
 end
 
 Expand(dataSet)

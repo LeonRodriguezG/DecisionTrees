@@ -68,6 +68,7 @@ def Gain(dataMatrix , gainAttribute)
   return sum
 end
 
+AllAtt = Hash.new
 
 def Expand (dataMatrix, level=0)
   space = ""
@@ -98,6 +99,7 @@ def Expand (dataMatrix, level=0)
     dataForAttributes[dataMatrix[n][expandedAttPos]][currIndex] = dataMatrix[n].dup
     dataForAttributes[dataMatrix[n][expandedAttPos]][currIndex].delete_at(expandedAttPos)
   end
+  puts AllAtt[dataMatrix['attributes'][expandedAttPos]]
   dataForAttributes.keys.each do |key|
     puts "#{space}#{dataMatrix['attributes'][expandedAttPos]}: #{key}"
     Expand(dataForAttributes[key],level+1)
@@ -111,7 +113,6 @@ end
 
 relation=nil
 newLine=nil
-allAtt = Hash.new
 dataSet= Hash.new
 
 relation = gets.chomp
@@ -127,12 +128,10 @@ while newLine.split(' ')[0] != "@attribute"
 end
 dataSet['attributes']=[]
 while newLine.split(' ')[0] == "@attribute"
-  allAtt[(newLine.split(' ')[1])] = newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(',')
+  AllAtt[(newLine.split(' ')[1])] = newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(',')
   dataSet['attributes'].push(newLine.split('{')[0].split(' ')[1])
   newLine = gets.chomp
 end
-
-puts allAtt
 
 while(newLine.split(' ')[0] != "@data")
   newLine = gets.chomp

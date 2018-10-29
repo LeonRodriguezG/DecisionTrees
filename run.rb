@@ -2,7 +2,7 @@
 #################################################################
 #
 #  Function return the entropy (como se escriba)
-#   of a Hash of the next form
+#   of a Hash in the next form
 #   InputHash['attributes'] = array of the attributes in order
 #   InputHash[num] = array of the values of the data lines
 #   num goes from 0 to dataLines - 1
@@ -12,13 +12,13 @@
 
 def H(dataMatrix)
   outputPos = dataMatrix[0].length - 1
-  linesOfData=dataMatrix.length - 1
+  linesOfData = dataMatrix.length - 1
   outNumber = Hash.new
   sum = 0.0
 
   #Get the number of times that a certain value apears in the output
   linesOfData.times do |n|
-    if outNumber[dataMatrix[n][outputPos]]== nil
+    if outNumber[dataMatrix[n][outputPos]] == nil
       outNumber[dataMatrix[n][outputPos]] =  1.0
     else
       outNumber[dataMatrix[n][outputPos]] += 1.0
@@ -43,7 +43,7 @@ end
 ################################################################
 
 def Gain(dataMatrix , gainAttribute)
-  linesOfData=dataMatrix.length - 1
+  linesOfData = dataMatrix.length - 1
   dataForAttributes = Hash.new
   attPos = nil
   sum = H(dataMatrix)
@@ -53,7 +53,7 @@ def Gain(dataMatrix , gainAttribute)
     end
   end
   linesOfData.times do |n|
-    if dataForAttributes[dataMatrix[n][attPos]]== nil
+    if dataForAttributes[dataMatrix[n][attPos]] == nil
       dataForAttributes[dataMatrix[n][attPos]] = Hash.new
       dataForAttributes[dataMatrix[n][attPos]]['attributes'] = dataMatrix['attributes'].dup
       dataForAttributes[dataMatrix[n][attPos]]['attributes'].delete_at(attPos)
@@ -89,7 +89,7 @@ def Expand (dataMatrix, level=0)
     end
   end
   linesOfData.times do |n|
-    if dataForAttributes[dataMatrix[n][expandedAttPos]]== nil
+    if dataForAttributes[dataMatrix[n][expandedAttPos]] == nil
       dataForAttributes[dataMatrix[n][expandedAttPos]] = Hash.new
       dataForAttributes[dataMatrix[n][expandedAttPos]]['attributes'] = dataMatrix['attributes'].dup
       dataForAttributes[dataMatrix[n][expandedAttPos]]['attributes'].delete_at(expandedAttPos)
@@ -105,11 +105,6 @@ def Expand (dataMatrix, level=0)
   return
 end
 
-
-
-
-
-
 #######################################################################################
 #                         Reciving data (does not work with alpha grader)             #
 # #####################################################################################
@@ -118,7 +113,6 @@ relation=nil
 newLine=nil
 allAtt = Hash.new
 dataSet= Hash.new
-
 
 relation = gets
 while relation.split(' ')[0] != "@relation"

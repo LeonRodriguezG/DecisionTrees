@@ -146,7 +146,9 @@ while newLine != "\n"
     end
     #line+=1
   end
-  break if gets.chomp.empty?
+  if gets.chomp == ""
+    break
+  end
     newLine = gets.chomp
 end
 

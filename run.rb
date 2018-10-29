@@ -116,10 +116,8 @@ end
 
 relation=nil
 newLine=nil
-#allAtt=Array.new() {Array.new()}
 allAtt = Hash.new
 dataSet= Hash.new
-keys = []
 
 
 relation = gets
@@ -127,11 +125,8 @@ while relation.split(' ')[0] != "@relation"
   relation = gets
 end
 relation = relation.split(' ')[1]
-#puts "Relation: #{relation}"
 
 newLine = gets
-
-
 
 while newLine.split(' ')[0] != "@attribute"
   newLine = gets
@@ -143,16 +138,12 @@ while newLine.split(' ')[0] == "@attribute"
   newLine = gets
 end
 
-
 while(newLine.split(' ')[0] != "@data")
   newLine = gets
 end
 
 line = 0
 newLine = gets
-while newLine == nil
-  newLine = gets
-end
 while newLine.split(' ')[0] != nil
   if newLine.split(' ')[0] != '%'
     dataSet[line]=[]

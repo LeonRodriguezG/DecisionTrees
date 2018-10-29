@@ -137,15 +137,15 @@ while(newLine.split(' ')[0] != "@data")
   newLine = gets.chomp
 end
 
-#line = 0
+line = 0
 newLine = gets.chomp
-dataSet = []
 while newLine != "\n"
   if newLine != "\n" && newLine[0,1] != "%"
+    dataSet[line]=[]
     newLine.split(',').each do |val|
-      dataSet.push(val)
+      dataSet[line].push(val)
     end
-    #line+=1
+    line+=1
   end
   newLine = gets
   if newLine == nil

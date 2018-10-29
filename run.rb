@@ -69,16 +69,20 @@ def Gain(dataMatrix , gainAttribute)
 end
 
 
-def Expand (dataMatrix)
+def Expand (dataMatrix, level=0)
+  space = ""
+  level.times do
+    space = space + "  "
+  end
   if H(dataMatrix) == 0.0
-    puts "Answer: #{dataMatrix[0][dataMatrix[0].length - 1]}"
+    puts "#{space}ANSWER: #{dataMatrix[0][dataMatrix[0].length - 1]}"
     return
   end
   linesOfData=dataMatrix.length - 1
   dataForAttributes = Hash.new
   gain = -1.0
   expandedAttPos = nil
-  dataMatrix['attributes'].length.times do |n|
+  (dataMatrix['attributes'].length-1).times do |n|
     if Gain(dataMatrix,dataMatrix['attributes'][n])>gain
       expandedAttPos = n
       gain = Gain(dataMatrix,dataMatrix['attributes'][n])
@@ -95,8 +99,8 @@ def Expand (dataMatrix)
     dataForAttributes[dataMatrix[n][expandedAttPos]][currIndex].delete_at(expandedAttPos)
   end
   dataForAttributes.keys.each do |key|
-    puts "#{dataMatrix['attributes'][expandedAttPos]}: #{key}"
-    Expand(dataForAttributes[key])
+    puts "#{space}#{dataMatrix['attributes'][expandedAttPos]}: #{key}"
+    Expand(dataForAttributes[key],level+1)
   end
   return
 end
@@ -117,32 +121,33 @@ allAtt = Hash.new
 dataSet= Hash.new
 keys = []
 
-relation = gets.chomp
+
+relation = gets
 while relation.split(' ')[0] != "@relation"
-  relation = gets.chomp
+  relation = gets
 end
 relation = relation.split(' ')[1]
 #puts "Relation: #{relation}"
 
-newLine = gets.chomp
+newLine = gets
 
 
 
 while newLine.split(' ')[0] != "@attribute"
-  newLine = gets.chomp
+  newLine = gets
 end
 dataSet['attributes']=[]
 while newLine.split(' ')[0] == "@attribute"
   allAtt[(":" + newLine.split(' ')[1])] = newLine.split('{')[1].gsub(/ /,'').gsub(/}/,'').split(',')
   dataSet['attributes'].push(newLine.split('{')[0].split(' ')[1])
-  newLine = gets.chomp
+  newLine = gets
 end
 
 
 while(newLine.split(' ')[0] != "@data")
-  newLine = gets.chomp
+  newLine = gets
 end
-newLine = gets.chomp
+newLine = gets
 
 line = 0
 while newLine.split(' ')[0] != nil
@@ -153,7 +158,7 @@ while newLine.split(' ')[0] != nil
     end
     line+=1
   end
-  newLine = gets.chomp
+  newLine = gets
 end
 
 Expand(dataSet)

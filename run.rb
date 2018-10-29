@@ -147,9 +147,12 @@ end
 while(newLine.split(' ')[0] != "@data")
   newLine = gets
 end
-newLine = gets
 
 line = 0
+newLine = gets
+while newLine == nil
+  newLine = gets
+end
 while newLine.split(' ')[0] != nil
   if newLine.split(' ')[0] != '%'
     dataSet[line]=[]
